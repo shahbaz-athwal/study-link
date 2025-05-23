@@ -1,6 +1,11 @@
-import { format, isToday, isYesterday } from "date-fns";
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+import { isToday, isYesterday, format } from "date-fns";
 
-// Helper functions
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
 export const getInitials = (name: string) => {
   return name
     .split(" ")
