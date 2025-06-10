@@ -70,7 +70,7 @@ export function SignupForm({
   };
 
   return (
-    <Card className="max-w-md w-full mx-auto border-none">
+    <Card className="max-w-md w-full mx-auto shadow-none py-0 gap-2 border-none">
       <CardHeader className="pb-0">
         <CardTitle>Welcome to Study Link</CardTitle>
         <CardDescription>
