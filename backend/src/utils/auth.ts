@@ -33,12 +33,10 @@ export const auth = betterAuth({
     },
   },
 
-  trustedOrigins: process.env.FRONTEND_URL
-    ? [
-        process.env.FRONTEND_URL,
-        "http://localhost:5173",
-        "http://10.0.0.47:5173",
-        "https://*.vercel.app",
-      ]
-    : ["*"],
+  trustedOrigins: [
+    process.env.FRONTEND_URL!,
+    "http://localhost:5173",
+    "http://10.0.0.47:5173",
+    "https://*.vercel.app",
+  ],
 });

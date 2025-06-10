@@ -15,16 +15,15 @@ import metricsMiddleware from "./middlewares/metrics";
 const app = express();
 const PORT = process.env.PORT ?? 3000;
 
+const isDev = process.env.NODE_ENV === "development";
+
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL
-      ? [
-          process.env.FRONTEND_URL,
-          "http://localhost:5173",
-          "http://10.0.0.47:5173",
-          /^https:\/\/.*shahbazs-projects-0c71becb\.vercel\.app$/,
-        ]
-      : ["*"],
+    origin: [
+      process.env.FRONTEND_URL!,
+      ...(isDev ? ["http://localhost:5173", "http://10.0.0.47:5173"] : []),
+      /^https:\/\/.*shahbazs-projects-0c71becb\.vercel\.app$/,
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
@@ -48,7 +47,7 @@ app.use("/groups", groupRoutes);
 app.use("/discussions", discussionRoutes);
 app.use("/files", filesRoutes);
 
-app.get("/", (req, res) => {
+app.get("/", (_, res) => {
   res.send("Backend is Running 🚀");
 });
 
