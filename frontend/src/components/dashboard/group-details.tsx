@@ -88,7 +88,7 @@ const GroupDetails = () => {
         <Tabs
           value={activeTab}
           onValueChange={setActiveTab}
-          className="h-full flex flex-col"
+          className="h-full flex flex-col gap-0"
         >
           {showGroupHeader && (
             <div className="w-full overflow-x-auto border-b">
@@ -99,7 +99,7 @@ const GroupDetails = () => {
                     <TabsTrigger
                       key={tab.id}
                       value={tab.id}
-                      className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none whitespace-nowrap flex-shrink-0"
+                      className="relative h-9 rounded-none border-b-2 px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none data-[state=active]:border-b-primary data-[state=active]:shadow-none whitespace-nowrap flex-shrink-0"
                     >
                       <div className="flex items-center gap-2">
                         <IconComponent className="w-5 h-5 md:hidden" />
