@@ -59,7 +59,8 @@ const GroupDetails = () => {
   ];
 
   const isMobile = useMobile();
-  const showGroupHeader = !currentDiscussionId || !isMobile;
+  const showGroupHeader =
+    !currentDiscussionId || !isMobile || activeTab !== "discussions";
 
   return (
     <div className="h-full flex flex-col">

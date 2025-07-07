@@ -8,18 +8,19 @@ import { cn } from "@lib/utils";
 
 const Dashboard = () => {
   const currentGroup = useGroupStore((state) => state.currentGroup);
+  const activeTab = useGroupStore((state) => state.activeTab);
   const currentDiscussionId = useChatStore(
     (state) => state.currentDiscussionId
   );
   const isMobile = useMobile();
-  const showSidebar = !currentDiscussionId || !isMobile;
+  const showSidebar =
+    !currentDiscussionId || !isMobile || activeTab !== "discussions";
 
   return (
     <div
-      className={cn(
-        "flex md:min-h-[calc(100vh-54px)] min-h-screen w-full",
-        showSidebar && "min-h-[calc(100vh-3.5rem)]"
-      )}
+      className={cn("flex min-h-[calc(100vh-54px)] w-full", {
+        "min-h-screen": !showSidebar,
+      })}
     >
       {showSidebar && <GroupSidebar />}
       {isMobile && !currentDiscussionId ? (
